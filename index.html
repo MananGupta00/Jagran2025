@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jagran Invitation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif:wght@400;700&display=swap');
+
+        *, *:before, *:after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif', serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            background: black;
+            overflow: hidden;
+        }
+        .header{
+            position: fixed;
+            top: 0;
+            left: 5vw;
+            width: 90vw;
+            height: 10vh;
+            background-image: url('decor.png');
+            background-repeat: repeat;
+            background-position: top center;
+            background-size: 50%;
+            
+            z-index: 1; 
+        }
+
+        /* Video Background */
+.video-container {
+    position: fixed;
+    top: -2vw;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keep it behind other content */
+}
+
+.video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(0.75); /* Scale down the video to zoom out */
+    transform-origin: center; /* Keep the zoom centered */
+}
+
+        /* Overlay for readability */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1)); /* Lighten top, darken bottom */
+            z-index: 0;
+        }
+
+        .container {
+            margin-left: 10vw;
+            margin-top:55vh;
+            position: relative;
+            z-index: 1;
+            width : 80vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background-color: rgb(0,0,0,0.4);
+        }
+
+        .header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 48px;
+            color: #ff7043;
+            margin-bottom: 20px;
+        }
+
+        .content h2 {
+            
+            font-size: 24px;
+            color: #ffed4f;
+            margin-bottom: 10px;
+            background-color: rgb(0,0,0,0.2);
+        }
+
+        .content p {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: large;
+            line-height: 1.6;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .details {
+            font-weight: bold;
+            color: #ffcc80;
+            text-align: left;
+            padding: 10vw;
+        }
+
+        .footer {
+            position: fixed;
+            bottom:14px;
+            font-size: 14px;
+            background-color: rgb(0,0,0,0.5);
+            color: #ffab91;
+        }
+        strong{
+            margin-right: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .content h2 {
+                font-size: 20px;
+            }
+
+            .content p {
+                font-size: 14px;
+            }
+        }
+        #curtains {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: black;
+            z-index: 5; /* Keep it above the video */
+            transition: opacity 10s ease, visibility 10s ease; /* Smooth fade-out */
+            display: flex;
+            justify-content: center;
+            align-items: center !important;
+
+        }
+        #play-button {
+            width: 250px;
+            height: 250px;
+            position: fixed;
+            border: none;
+            cursor: pointer;
+            background: url('sealed-mail.png') no-repeat center center;
+            z-index: 10; /* Keep it above other content */
+            transition: opacity 1s ease, visibility 1s ease, top 0.3s ease; /* Smooth fade-out */
+            animation: shake 2s infinite; /* Apply the shake animation */
+
+        }
+        @keyframes shake {
+        0%, 100% {
+            transform: translateX(0) rotateZ(0deg);
+        }
+        10% {
+            transform: translateX(-5px) rotateZ(-5deg);
+        }
+        20% {
+            transform: translateX(5px) rotateZ(5deg);
+        }
+        30% {
+            transform: translateX(0px) rotateZ(0deg);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class = 'header'></div>
+    <!-- Video Background -->
+    <div id = "curtains">
+        <button id="play-button"></button>
+    </div>
+
+    <div class="video-container">
+        <video class="video-background" autoplay muted loop>
+            <source src="mata.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <!-- Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            <h2>जय माता दी!</h2>
+            <hr/>
+            <p>You're invited to a divine journey of devotion, music, and blessings. </p><p>Time? The moonlit culmination of the eve on <strong>April 15, 2025</strong></p>
+            <div class="details">
+                <p><strong>Venue:</strong> 257 Sadan Puri, Kanker Khera. </p><p>Landmark- Guru Nanak Girls Inter College</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>-श्री नवीन कुमार गुप्ता (9837117106)</p>
+        </div>
+    </div>
+        <!-- Background Music -->
+        <audio id="bg-music" loop>
+            <source src="indian-style-bgm.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <script>
+            const playButton = document.getElementById('play-button');
+            const curtain = document.getElementById('curtains');
+            const bgMusic = document.getElementById('bg-music');
+    
+            playButton.addEventListener('click', () => {
+                bgMusic.play();
+                curtain.style.opacity = '0';
+                curtain.style.visibility = 'hidden';
+                playButton.style.opacity = '0';
+                playButton.style.visibility = 'hidden';
+                playButton.style.top = '20vh';// Move the button out of view
+            });
+        </script>
+</body>
+</html>
