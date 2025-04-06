@@ -47,13 +47,13 @@
 }
 
 .video-background {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scale(0.75); /* Scale down the video to zoom out */
-    transform-origin: center; /* Keep the zoom centered */
+    
+    
 }
-
+.video-background img {
+        
+        background-size: 100% 100%;
+    }
         /* Overlay for readability */
         .overlay {
             position: fixed;
@@ -88,8 +88,7 @@
         }
 
         .content h2 {
-            
-            font-size: 36px;
+            font-size: 26px;
             color: #fff173;
             margin-bottom: 10px;
             background-color: rgb(0,0,0,0.2);
@@ -97,33 +96,36 @@
 
         .content p {
             font-family: 'Cinzel Decorative', cursive;
-            font-size: large;
             line-height: 1.6;
             color:#fff173;
             background: rgba(0, 0, 0, 0.3);
         }
 
         .details {
-            font-weight:900;
-            color: #ffcc80;
+            font-weight:500;
+            font-size:0.8em;
             text-align: left;
             padding: 5vw;
         }
         .details >p{
             color: #fff173;
-            text-align: center;
+            text-align: left !important;
         }
         .shlok{
             color:#fff173;
+            font-size: medium;
         }
 
         .footer {
-            position: fixed;
-            bottom:14px;
-            font-size: 11px;
-            background-color: rgb(0,0,0,0.5);
-            color: #fffc34;
-        }
+    position: fixed;
+    bottom: 14px;
+    width: 100%; /* Ensure the footer spans the full width */
+    font-size: 11px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fffc34;
+    text-align: center; /* Center the text horizontally */
+    z-index: 1;
+}
         strong{
             margin-right: 5px;
         }
@@ -184,17 +186,15 @@
     </style>
 </head>
 <body>
-    <div class = 'header'></div>
     <!-- Video Background -->
     <div id = "curtains">
         <button id="play-button"></button>
     </div>
 
     <div class="video-container">
-        <video class="video-background" autoplay muted loop>
-            <source src="mata.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+        <div class="video-background">
+            <img src="mata.jpg" alt="Mata Image" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
     </div>
     <!-- Overlay -->
     <div class="overlay"></div>
@@ -205,19 +205,17 @@
             <h2>जय माता दी!</h2>
             <hr/>
             <p class ="shlok">
-                सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।
-                <br>
-                शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥
+                सभी भक्तों को माता के जागरण में निमंत्रण है। कृपा भक्तिमय भजनों में हमारे साथ जुड़ें।
             </p>
             
-            <div class="details">
-                निवास स्थान:  257 सदन पुरी, कंकरखेड़ा, मेरठ कैंट <br>लैंडमार्क- गुरु नानक गर्ल्स इंटर कॉलेज
+            <div class="details" >
+                निवास स्थान:  257 सदन पुरी, कंकरखेड़ा, मेरठ कैंट। <br> गुरु नानक गर्ल्स इंटर कॉलेज के सामने।<br>
+                दिनांक:  15 अक्टूबर 2025 (मंगलवार)<br>समय: 10:00 बजे रात से।
                 <br><br>
-                <p>आपको माता के जागरण में निमंत्रण है।</p>
             </div>
         </div>
         <div class="footer">
-            <p>- श्रीमती मणि गुप्ता & श्री नवीन कुमार गुप्ता (9837117106)</p>
+            - श्रीमती मणि गुप्ता & श्री नवीन कुमार गुप्ता (9837117106)
         </div>
     </div>
         <!-- Background Music -->
@@ -230,14 +228,24 @@
             const playButton = document.getElementById('play-button');
             const curtain = document.getElementById('curtains');
             const bgMusic = document.getElementById('bg-music');
-    
+        
+            // Play music and hide curtains when the play button is clicked
             playButton.addEventListener('click', () => {
                 bgMusic.play();
                 curtain.style.opacity = '0';
                 curtain.style.visibility = 'hidden';
                 playButton.style.opacity = '0';
                 playButton.style.visibility = 'hidden';
-                playButton.style.top = '20vh';// Move the button out of view
+                playButton.style.top = '20vh'; // Move the button out of view
+            });
+        
+            // Pause music when the page is not visible
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    bgMusic.pause(); // Pause the music when the page is hidden
+                } else {
+                    bgMusic.play(); // Resume the music when the page is visible again
+                }
             });
         </script>
 </body>
